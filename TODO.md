@@ -44,12 +44,8 @@
 
 # Indentified next steps
 
-- Extract Rule config into a separate object
-    - Extract each check into a separate method
-    - Parse all rules via methods
-    - Create PasswordValidator with config in constructor
-- Refactor existing test to support new Rule extraction
-- Prepare new tests to support new Rule definition
+- Convert rules dictionary into typed record
+- Conver Rule into a class with Interface
 
 # Kata Instructions
 

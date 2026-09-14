@@ -39,7 +39,7 @@ public class PasswordValidator(Dictionary<string, object> rules)
             }
         }
         
-        if (rules.TryGetValue("requireNumber", out var requireNumber) && requireLower is bool)
+        if (rules.TryGetValue("requireNumber", out var requireNumber) && requireNumber is bool)
         {
             if (!password.Any(char.IsNumber))
             {
