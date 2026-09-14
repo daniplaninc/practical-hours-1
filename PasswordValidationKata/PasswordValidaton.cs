@@ -6,7 +6,10 @@ public class PasswordValidator
     {
         if (password.Length > 8)
         {
-            return true;
+            if (password.Any(char.IsUpper))
+            {
+                return true;
+            }
         }
 
         return false;
