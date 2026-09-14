@@ -5,7 +5,7 @@ public class IterationOne
     [Fact]
     public void AcceptPasswordWithMoreThanEightCharacters()
     {
-        string longPassword = "hdvfbg6stf.DUSFB";
+        string longPassword = "hdv_bg6stf.DUSFB";
         var passwordValidator = new PasswordValidator();
         
         Assert.True(passwordValidator.Validate(longPassword));
@@ -14,7 +14,7 @@ public class IterationOne
     [Fact]
     public void RejectPasswordWithLessThanEightCharacters()
     {
-        string shortPassword = "vfbf.DU";
+        string shortPassword = "v_bf.DU";
         var passwordValidator = new PasswordValidator();
         
         Assert.False(passwordValidator.Validate(shortPassword));
@@ -23,7 +23,7 @@ public class IterationOne
     [Fact]
     public void AcceptPasswordWithCapitalLetters()
     {
-        string longPassword = "hdvfbg6stf.DUSFB";
+        string longPassword = "hdv_bg6stf.DUSFB";
         var passwordValidator = new PasswordValidator();
         
         Assert.True(passwordValidator.Validate(longPassword));
@@ -32,7 +32,7 @@ public class IterationOne
     [Fact]
     public void RejectPasswordWithoutCapitalLetters()
     {
-        string longPassword = "hdvfbg6stf.dusfb";
+        string longPassword = "hdv_bg6stf.dusfb";
         var passwordValidator = new PasswordValidator();
         
         Assert.False(passwordValidator.Validate(longPassword));
@@ -41,7 +41,7 @@ public class IterationOne
     [Fact]
     public void AcceptPasswordWithLowercaseLetters()
     {
-        string longPassword = "hdvfbg6stf.DUSFB";
+        string longPassword = "hdv_bg6stf.DUSFB";
         var passwordValidator = new PasswordValidator();
         
         Assert.True(passwordValidator.Validate(longPassword));
@@ -50,7 +50,7 @@ public class IterationOne
     [Fact]
     public void RejectPasswordWithoutLowercaseLetters()
     {
-        string longPassword = "HDVFBG6STF.DUSFB";
+        string longPassword = "HDV_BG6STF.DUSFB";
         var passwordValidator = new PasswordValidator();
         
         Assert.False(passwordValidator.Validate(longPassword));
@@ -59,7 +59,7 @@ public class IterationOne
     [Fact]
     public void AcceptPasswordWithNumbers()
     {
-        string longPassword = "hdvfbg6stf.DUSFB";
+        string longPassword = "hdv_bg6stf.DUSFB";
         var passwordValidator = new PasswordValidator();
         
         Assert.True(passwordValidator.Validate(longPassword));
@@ -68,7 +68,7 @@ public class IterationOne
     [Fact]
     public void RejectPasswordWithoutNumbers()
     {
-        string longPassword = "HDVFBGhSTF.DUSFB";
+        string longPassword = "HDV_BGhSTF.DUSFB";
         var passwordValidator = new PasswordValidator();
         
         Assert.False(passwordValidator.Validate(longPassword));

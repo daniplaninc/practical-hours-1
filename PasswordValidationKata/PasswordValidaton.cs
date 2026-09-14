@@ -12,7 +12,10 @@ public class PasswordValidator
                 {
                     if (password.Any(char.IsNumber))
                     {
-                        return true;
+                        if (password.Contains('_'))
+                        {
+                            return true;
+                        }
                     }
                 }
             }
