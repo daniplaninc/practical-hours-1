@@ -19,4 +19,22 @@ public class IterationOne
         
         Assert.False(passwordValidator.Validate(shortPassword));
     }
+    
+    [Fact]
+    public void AcceptPasswordWithCapitalLetters()
+    {
+        string longPassword = "hdvfbg6stf.DUSFB";
+        var passwordValidator = new PasswordValidator();
+        
+        Assert.True(passwordValidator.Validate(longPassword));
+    }
+    
+    [Fact]
+    public void RejectPasswordWithoutCapitalLetters()
+    {
+        string longPassword = "hdvfbg6stf.dusfb";
+        var passwordValidator = new PasswordValidator();
+        
+        Assert.False(passwordValidator.Validate(longPassword));
+    }
 }
