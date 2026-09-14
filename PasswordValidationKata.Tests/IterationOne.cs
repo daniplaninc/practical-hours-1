@@ -73,4 +73,22 @@ public class IterationOne
         
         Assert.False(passwordValidator.Validate(longPassword));
     }
+    
+    [Fact]
+    public void AcceptPasswordWithUnderscores()
+    {
+        string longPassword = "hdv_bg6stf.DUSFB";
+        var passwordValidator = new PasswordValidator();
+        
+        Assert.True(passwordValidator.Validate(longPassword));
+    }
+    
+    [Fact]
+    public void RejectPasswordWithoutUnderscores()
+    {
+        string longPassword = "hdvbg6stf.DUSFB";
+        var passwordValidator = new PasswordValidator();
+        
+        Assert.False(passwordValidator.Validate(longPassword));
+    }
 }
