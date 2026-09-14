@@ -2,12 +2,6 @@ namespace PasswordValidationKata.Tests;
 
 public class IterationOne
 {
-    private const string ValidPassword = "hdv_bg6stf.DUSFB";
-    private const string ShortPassword = "v_b.DUB";
-    private const string LowerPassword = "hdv_bg6stf.dusfb";
-    private const string UpperPassword = "HDV_BG6STF.DUSFB";
-    private const string NumberlessPassword = "hdv_bgstf.DUSFB";
-    private const string UnderscorelessPassword = "hdvbg6stf.DUSFB";
     
     private readonly Dictionary<string, object> _validationOneRules = new Dictionary<string, object>
     {
@@ -28,24 +22,8 @@ public class IterationOne
         {"UnderscorelessPassword", "hdvbg6stf.DUSFB" },
     };
     
-    private readonly Dictionary<string, object> _validationTwoRules = new Dictionary<string, object>
-    {
-        { "min_length", 6 },
-        { "requireUpper", true },
-        { "requireLower", true },
-        { "requireNumber", true },
-    };
-    
-    private readonly Dictionary<string, object> _validationThreeRules = new Dictionary<string, object>
-    {
-        { "min_length", 16 },
-        { "requireUpper", true },
-        { "requireLower", true },
-        { "requireUnderscore", true },
-    };
-    
     [Fact]
-    public void AcceptPasswordWithMoreThanEightCharacters()
+    public void ValidationOne_AcceptPasswordWithMoreThanEightCharacters()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
@@ -53,7 +31,7 @@ public class IterationOne
     }
     
     [Fact]
-    public void RejectPasswordWithLessThanEightCharacters()
+    public void ValidationOne_RejectPasswordWithLessThanEightCharacters()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
@@ -61,7 +39,7 @@ public class IterationOne
     }
     
     [Fact]
-    public void AcceptPasswordWithCapitalLetters()
+    public void ValidationOne_AcceptPasswordWithCapitalLetters()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
@@ -69,7 +47,7 @@ public class IterationOne
     }
     
     [Fact]
-    public void RejectPasswordWithoutCapitalLetters()
+    public void ValidationOne_RejectPasswordWithoutCapitalLetters()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
@@ -77,7 +55,7 @@ public class IterationOne
     }
     
     [Fact]
-    public void AcceptPasswordWithLowercaseLetters()
+    public void ValidationOne_AcceptPasswordWithLowercaseLetters()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
@@ -85,7 +63,7 @@ public class IterationOne
     }
     
     [Fact]
-    public void RejectPasswordWithoutLowercaseLetters()
+    public void ValidationOne_RejectPasswordWithoutLowercaseLetters()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
@@ -93,7 +71,7 @@ public class IterationOne
     }
     
     [Fact]
-    public void AcceptPasswordWithNumbers()
+    public void ValidationOne_AcceptPasswordWithNumbers()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
@@ -101,7 +79,7 @@ public class IterationOne
     }
     
     [Fact]
-    public void RejectPasswordWithoutNumbers()
+    public void ValidationOne_RejectPasswordWithoutNumbers()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
@@ -109,7 +87,7 @@ public class IterationOne
     }
     
     [Fact]
-    public void AcceptPasswordWithUnderscores()
+    public void ValidationOne_AcceptPasswordWithUnderscores()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
@@ -117,7 +95,7 @@ public class IterationOne
     }
     
     [Fact]
-    public void RejectPasswordWithoutUnderscores()
+    public void ValidationOne_RejectPasswordWithoutUnderscores()
     {
         var passwordValidator = new PasswordValidator(_validationOneRules);
         
