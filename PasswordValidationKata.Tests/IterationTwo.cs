@@ -19,13 +19,22 @@ public class IterationTwo
         {"NumberlessPassword", "hdvbgstf.DUSFB" },
     };
     
-    // private readonly Dictionary<string, object> _validationThreeRules = new Dictionary<string, object>
-    // {
-    //     { "min_length", 16 },
-    //     { "requireUpper", true },
-    //     { "requireLower", true },
-    //     { "requireUnderscore", true },
-    // };
+    private readonly Dictionary<string, object> _validationThreeRules = new Dictionary<string, object>
+    {
+        { "min_length", 16 },
+        { "requireUpper", true },
+        { "requireLower", true },
+        { "requireUnderscore", true },
+    };
+    
+    private readonly Dictionary<string, object> _validationThreePasswords = new Dictionary<string, object>
+    {
+        {"ValidPassword", "hdvbg_stf.DUSFBhdvbg_stf.DUSFB" },
+        {"ShortPassword", "vb.D_B" },
+        {"LowerPassword", "hdvbg_stf.dusfbhdvbg_stf.dusfb" },
+        {"UpperPassword", "HDVBG_STF.DUSFBHDVBG_STF.DUSFB" },
+        {"UnderscorelessPassword", "hdvbgstf.DUSFBhdvbgstf.DUSFB" },
+    };
     
     [Fact]
     public void ValidationTwo_AcceptPasswordWithMoreThanSixCharacters()
@@ -89,5 +98,69 @@ public class IterationTwo
         var passwordValidator = new PasswordValidator(_validationTwoRules);
         
         Assert.False(passwordValidator.Validate((string)_validationTwoPasswords["NumberlessPassword"]));
+    }
+    
+    [Fact]
+    public void ValidationThree_AcceptPasswordWithMoreThanEightCharacters()
+    {
+        var passwordValidator = new PasswordValidator(_validationThreeRules);
+        
+        Assert.True(passwordValidator.Validate((string)_validationThreePasswords["ValidPassword"]));
+    }
+    
+    [Fact]
+    public void ValidationThree_RejectPasswordWithLessThanEightCharacters()
+    {
+        var passwordValidator = new PasswordValidator(_validationThreeRules);
+        
+        Assert.False(passwordValidator.Validate((string)_validationThreePasswords["ShortPassword"]));
+    }
+    
+    [Fact]
+    public void ValidationThree_AcceptPasswordWithCapitalLetters()
+    {
+        var passwordValidator = new PasswordValidator(_validationThreeRules);
+        
+        Assert.True(passwordValidator.Validate((string)_validationThreePasswords["ValidPassword"]));
+    }
+    
+    [Fact]
+    public void ValidationThree_RejectPasswordWithoutCapitalLetters()
+    {
+        var passwordValidator = new PasswordValidator(_validationThreeRules);
+        
+        Assert.False(passwordValidator.Validate((string)_validationThreePasswords["LowerPassword"]));
+    }
+    
+    [Fact]
+    public void ValidationThree_AcceptPasswordWithLowercaseLetters()
+    {
+        var passwordValidator = new PasswordValidator(_validationThreeRules);
+        
+        Assert.True(passwordValidator.Validate((string)_validationThreePasswords["ValidPassword"]));
+    }
+    
+    [Fact]
+    public void ValidationThree_RejectPasswordWithoutLowercaseLetters()
+    {
+        var passwordValidator = new PasswordValidator(_validationThreeRules);
+        
+        Assert.False(passwordValidator.Validate((string)_validationThreePasswords["UpperPassword"]));
+    }
+    
+    [Fact]
+    public void ValidationThree_AcceptPasswordWithUnderscores()
+    {
+        var passwordValidator = new PasswordValidator(_validationThreeRules);
+        
+        Assert.True(passwordValidator.Validate((string)_validationThreePasswords["ValidPassword"]));
+    }
+    
+    [Fact]
+    public void ValidationThree_RejectPasswordWithoutUnderscores()
+    {
+        var passwordValidator = new PasswordValidator(_validationThreeRules);
+        
+        Assert.False(passwordValidator.Validate((string)_validationThreePasswords["UnderscorelessPassword"]));
     }
 }
