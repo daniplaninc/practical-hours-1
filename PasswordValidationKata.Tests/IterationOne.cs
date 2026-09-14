@@ -55,4 +55,22 @@ public class IterationOne
         
         Assert.False(passwordValidator.Validate(longPassword));
     }
+    
+    [Fact]
+    public void AcceptPasswordWithNumbers()
+    {
+        string longPassword = "hdvfbg6stf.DUSFB";
+        var passwordValidator = new PasswordValidator();
+        
+        Assert.True(passwordValidator.Validate(longPassword));
+    }
+    
+    [Fact]
+    public void RejectPasswordWithoutNumbers()
+    {
+        string longPassword = "HDVFBGhSTF.DUSFB";
+        var passwordValidator = new PasswordValidator();
+        
+        Assert.False(passwordValidator.Validate(longPassword));
+    }
 }
