@@ -10,7 +10,10 @@ public class PasswordValidator
             {
                 if (password.Any(char.IsLower))
                 {
-                    return true;
+                    if (password.Any(char.IsNumber))
+                    {
+                        return true;
+                    }
                 }
             }
         }
