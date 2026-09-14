@@ -2,7 +2,6 @@ namespace PasswordValidationKata.Tests;
 
 public class IterationOne
 {
-    
     [Fact]
     public void AcceptPasswordWithMoreThanEightCharacters()
     {
@@ -10,5 +9,14 @@ public class IterationOne
         var passwordValidator = new PasswordValidator();
         
         Assert.True(passwordValidator.Validate(longPassword));
+    }
+    
+    [Fact]
+    public void RejectPasswordWithLessThanEightCharacters()
+    {
+        string shortPassword = "vfbf.DU";
+        var passwordValidator = new PasswordValidator();
+        
+        Assert.False(passwordValidator.Validate(shortPassword));
     }
 }
