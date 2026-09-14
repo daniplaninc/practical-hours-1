@@ -4,6 +4,11 @@ public class PasswordValidator
 {
     public bool Validate(string password)
     {
-        throw new NotImplementedException();
+        if (password.Length > 8)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
