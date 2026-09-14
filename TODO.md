@@ -38,8 +38,9 @@
 
 3) Refactor and Iterate
 
-- Refactor your code based on what you learned while testing.
+- [DONE] Refactor your code based on what you learned while testing.
 - Note any improvements in clarity, simplicity, or maintainability.
+  - Adding rules via constructor parameter allows me to reuse the same class with different base rules
 
 # Indentified next steps
 
