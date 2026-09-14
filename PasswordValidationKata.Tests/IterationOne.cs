@@ -9,10 +9,19 @@ public class IterationOne
     private const string NumberlessPassword = "hdv_bgstf.DUSFB";
     private const string UnderscorelessPassword = "hdvbg6stf.DUSFB";
     
+    private readonly Dictionary<string, object> _iteration1OneRules = new Dictionary<string, object>
+    {
+        { "min_length", 8 },
+        { "requireUpper", true },
+        { "requireLower", true },
+        { "requireNumber", true },
+        { "requireUnderscore", true }
+    };
+    
     [Fact]
     public void AcceptPasswordWithMoreThanEightCharacters()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.True(passwordValidator.Validate(ValidPassword));
     }
@@ -20,7 +29,7 @@ public class IterationOne
     [Fact]
     public void RejectPasswordWithLessThanEightCharacters()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.False(passwordValidator.Validate(ShortPassword));
     }
@@ -28,7 +37,7 @@ public class IterationOne
     [Fact]
     public void AcceptPasswordWithCapitalLetters()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.True(passwordValidator.Validate(ValidPassword));
     }
@@ -36,7 +45,7 @@ public class IterationOne
     [Fact]
     public void RejectPasswordWithoutCapitalLetters()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.False(passwordValidator.Validate(LowerPassword));
     }
@@ -44,7 +53,7 @@ public class IterationOne
     [Fact]
     public void AcceptPasswordWithLowercaseLetters()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.True(passwordValidator.Validate(ValidPassword));
     }
@@ -52,7 +61,7 @@ public class IterationOne
     [Fact]
     public void RejectPasswordWithoutLowercaseLetters()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.False(passwordValidator.Validate(UpperPassword));
     }
@@ -60,7 +69,7 @@ public class IterationOne
     [Fact]
     public void AcceptPasswordWithNumbers()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.True(passwordValidator.Validate(ValidPassword));
     }
@@ -68,7 +77,7 @@ public class IterationOne
     [Fact]
     public void RejectPasswordWithoutNumbers()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.False(passwordValidator.Validate(NumberlessPassword));
     }
@@ -76,7 +85,7 @@ public class IterationOne
     [Fact]
     public void AcceptPasswordWithUnderscores()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.True(passwordValidator.Validate(ValidPassword));
     }
@@ -84,7 +93,7 @@ public class IterationOne
     [Fact]
     public void RejectPasswordWithoutUnderscores()
     {
-        var passwordValidator = new PasswordValidator();
+        var passwordValidator = new PasswordValidator(_iteration1OneRules);
         
         Assert.False(passwordValidator.Validate(UnderscorelessPassword));
     }
