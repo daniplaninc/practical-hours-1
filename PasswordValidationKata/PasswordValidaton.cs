@@ -8,7 +8,10 @@ public class PasswordValidator
         {
             if (password.Any(char.IsUpper))
             {
-                return true;
+                if (password.Any(char.IsLower))
+                {
+                    return true;
+                }
             }
         }
 
